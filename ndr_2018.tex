@@ -238,7 +238,7 @@
     \includegraphics[height=0.8\textheight]{figures/total_cumulative_deaths_by_month}
 \end{frame}
 
-\begin{frame}{Analysis}
+\begin{frame}{Models}
     \centering%
     \begin{tabular}{lll}
         \toprule
@@ -533,7 +533,7 @@
     \end{block}
 \end{frame}
 
-\section{Results and recommendations}
+\section{Results}
 
 \begin{frame}{Seasonal naïve forecasts}
     \centering%
@@ -582,6 +582,8 @@
     \end{tabular}
 \end{frame}
 
+\section{Recommendations}
+
 \begin{frame}{Lessons learned}
     \only<1>{%
         \begin{block}{Time series are messy!}
@@ -602,15 +604,23 @@
         \end{block}}
 \end{frame}
 
-\begin{frame}{Recommendations}
-    \begin{enumerate}[<+->]
+\begin{frame}{Before you get started\ldots}
+    Ask yourself\ldots
+    \begin{itemize}[<+->]
+        \setlength{\itemsep}{1em}
+        \item Do I have \alert<1>{enough data}?
+        \item Is my time series \alert<2>{evenly spaced}?
+        \item Which \alert<3>{measures} do I care about?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{During modelling\ldots}
+    \begin{itemize}[<+->]
         \setlength{\itemsep}{1em}
         \item \alert<1>{Visualise} --- Trend? Seasonality? `Spikes'?
-        \item Decide on a \alert<2>{measure}
-        \item Start with a \alert<3>{simple} model
-        \item \alert<4>{Plot the ACF of residuals}
-        \item \alert<5>{Iterate}
-    \end{enumerate}
+        \item Start with a \alert<2>{simple} model
+        \item \alert<3>{Plot the ACF of residuals}
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Future work}
