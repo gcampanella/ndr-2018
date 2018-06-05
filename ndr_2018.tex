@@ -232,18 +232,19 @@
     \centering%
     \begin{tabular}{lll}
         \toprule
-        \textbf{Family}               & \textbf{Method} & \textbf{Package} \\
+        \textbf{Family}               & \textbf{Method}  & \textbf{Package} \\
         \midrule
-        \multirow{2}{*}{Baseline}     & Naïve (RW)      & \texttt{forecast} \\
-                                      & Average         & \texttt{forecast} \\
+        \multirow{4}{*}{Baseline}     & Naïve (RW)       & \texttt{forecast} \\
+                                      & Seasonal naïve   & \texttt{forecast} \\
+                                      & Naïve with drift & \texttt{forecast} \\
+                                      & Average          & \texttt{forecast} \\
         \midrule
-        \multirow{4}{*}{Univariate}   & ETS             & \texttt{forecast} \\
-                                      & ARIMA           & \texttt{forecast} \\
-                                      & BSTS            & \texttt{bsts} \\
-                                      & Prophet         & \texttt{prophet} \\
+        \multirow{4}{*}{Univariate}   & ETS              & \texttt{forecast} \\
+                                      & ARIMA            & \texttt{forecast} \\
+                                      & BSTS             & \texttt{bsts} \\
+                                      & Prophet          & \texttt{prophet} \\
         \midrule
-        \multirow{2}{*}{Hierarchical} & HTS             & \texttt{hts} \\
-                                      & BYM             & \texttt{INLA} \\
+        \multirow{1}{*}{Hierarchical} & HTS              & \texttt{hts} \\
         \bottomrule
     \end{tabular}
 \end{frame}
@@ -254,12 +255,12 @@
     For all $h = 1, 2, \ldots$,
     \begin{center}
         \renewcommand{\arraystretch}{1.5}%
-        \begin{tabular}{lll}
+        \begin{tabular}{ll}
             \toprule
-            \textbf{Method}     & \textbf{Forecast} & \\
-            \midrule
-            \textbf{Naïve (RW)} & Last observation & $\hat{y}_{T + h | T} = y_{T}$ \\
-            \textbf{Average}    & Average of the past & $\hat{y}_{T + h | T} = \frac{1}{T} \sum_{t} y_{t}$ \\
+            \textbf{Naïve (RW)}                     & $\hat{y}_{T + h\,| T} = y_{T}$ \\
+            \textbf{Seasonal naïve with period $m$} & $\hat{y}_{T + h\,| T} = y_{T+h-m(\lfloor (h-1)/m \rfloor+1)}$ \\
+            \textbf{Naïve with drift}               & $\hat{y}_{T + h\,| T} = y_{T} + h\,(y_{t} - y_{1}) / (T - 1)$ \\
+            \textbf{Average}                        & $\hat{y}_{T + h\,| T} = \sum_{t = 1}^{T} y_{t} / T$ \\
             \bottomrule
         \end{tabular}
     \end{center}
@@ -444,22 +445,6 @@
     \end{block}
 \end{frame}
 
-\begin{frame}{Besag--York--Mollié (BYM) model}
-    \begin{itemize}
-        \item Introduced by J.\ Besag et al.\ (University of Washington)
-        \item Conditional autoregressive (CAR) model
-        \item Commonly used for disease mapping
-    \end{itemize}
-    \vfill
-    \begin{block}{Model evaluated}
-        \begin{itemize}
-            \item Spatio\hyp{}temporal interaction (`type IV') with
-                  first\hyp{}order RWs
-            \item Random effects model for sex
-        \end{itemize}
-    \end{block}
-\end{frame}
-
 \subsection{Measures}
 
 \begin{frame}{Scale-dependent measures}
@@ -555,7 +540,7 @@
         Seasonal naïve           & 9.44\% \\
         Average                  & 9.83\% \\
         Naïve (RW)               & 11.4\% \\
-        RW with drift            & 11.8\% \\
+        Naïve with drift         & 11.8\% \\
         \bottomrule
     \end{tabular}
 \end{frame}
