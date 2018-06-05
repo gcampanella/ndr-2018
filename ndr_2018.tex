@@ -206,6 +206,16 @@
                 \item Stratified by sex
             \end{itemize}
         \end{block}}
+    \only<3>{%
+        \centering%
+        \begin{tabular}{llll}
+            \toprule
+                              & \textbf{Start} & \textbf{End}  & \textbf{Length} \\
+            \midrule
+            \textbf{Training} & January 2004   & June 2016     & 12.5 years \\
+            \textbf{Test}     & July 2016      & November 2017 & 17 months \\
+            \bottomrule
+        \end{tabular}}
 \end{frame}
 
 \begin{frame}{Pre-processing}
@@ -264,6 +274,33 @@
             \bottomrule
         \end{tabular}
     \end{center}
+\end{frame}
+
+\begin{frame}{Time series decomposition}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Common components}
+                \begin{itemize}
+                    \item Trend\hyp{}cycle $T_{t}$
+                    \item Seasonal $S_{t}$
+                    \item Remainder $R_{t}$
+                \end{itemize}
+            \end{block}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Additive model}
+                \[
+                    y_{t} = T_{t} + S_{t} + R_{t}
+                \]
+            \end{block}
+            \vfill
+            \begin{block}{Multiplicative model}
+                \[
+                    y_{t} = T_{t} \times S_{t} \times R_{t}
+                \]
+            \end{block}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \subsection{Exponential smoothing}
